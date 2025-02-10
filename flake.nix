@@ -142,7 +142,7 @@
                 libXpm
                 libXext
                 libXxf86vm
-                alsaLib
+                alsa-lib
                 libxkbcommon
                 wayland
                 fontconfig
@@ -296,7 +296,7 @@
         emacsng-noNativeComp = (
           (
             emacsng.override {
-	      withNativeCompilation = false;
+              withNativeCompilation = false;
             }
           )
           .overrideAttrs (
@@ -314,12 +314,11 @@
           .overrideAttrs (
             oa: {
               name = "${oa.name}-wr-pgtk";
-              configureFlags =
-              (
-                  prev.lib.subtractLists [
-                    "--with-winit"
-                  ]
-                  oa.configureFlags
+              configureFlags = (
+                prev.lib.subtractLists [
+                  "--with-winit"
+                ]
+                oa.configureFlags
               );
             }
           )
